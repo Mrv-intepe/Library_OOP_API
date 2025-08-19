@@ -1,19 +1,19 @@
 
-### Kütüphane Yönetim Sistemi ve API'si 
+# Kütüphane Yönetim Sistemi ve API'si 
 Bu proje, temel bir Kütüphane Yönetim Sistemi oluşturmayı ve bunu bir FastAPI web 
 API'si aracılığıyla sunmayı amaçlar. Ayrıca, harici bir API (Open Library) kullanarak kitap 
 bilgilerini zenginleştirme özelliği de içerir. 
 ## Bölüm 1: Temel OOP Yapısı Proje 
 Kitapları ve kütüphane operasyonlarını yönetmek için Nesne Yönelimli Programlama 
 (OOP) prensiplerini kullanır. 
-# Book Sınıfı: 
+### Book Sınıfı: 
 Her bir kitabı temsil eder. title, author ve isbn gibi temel bilgilere 
 sahiptir. JSON dönüşümleri için to_dict() ve from_dict() metodları bulunur.  
-# Library Sınıfı: 
+### Library Sınıfı: 
 Kitap koleksiyonunu yönetir. Kitap ekleme, silme, listeleme ve 
 arama gibi temel fonksiyonları sağlar. Kitap verilerini kalıcı olarak saklamak için 
 library.json adlı bir JSON dosyası kullanır.  
-# Çıktı örneği: 
+### Çıktı örneği: 
 Seçiminizi yapın (1-5): 1 --- Kitap Ekleme --- 
 Kitap başlığı: Uçurtma Avcısı 
 Yazar adı: Khaled Hosseini 
@@ -30,13 +30,13 @@ Seçiminizi yapın (1-5): 5
 Kütüphane sistemi kapatılıyor. Güle güle 
 ## Bölüm 2: Harici API Entegrasyonu Proje 
 Kitap bilgilerini Open Library API'sinden çekerek veri zenginleştirme yeteneği sunar. 
-# APILibrary Sınıfı: 
+### APILibrary Sınıfı: 
 Library sınıfının genişletilmiş halidir. httpx kütüphanesini kullanarak 
 Open Library API'sine (https://openlibrary.org/isbn/{isbn}.json) istek gönderir. 
 add_book_by_isbn() metodu, sadece ISBN girerek API'den kitap bilgilerini (başlık, yazar) 
 çeker ve kütüphaneye ekler. API iletişimindeki hataları (kitap bulunamadı - 404, bağlantı 
 sorunları vb.) yönetir.  
-# Çıktı örnekleri:  
+### Çıktı örnekleri:  
 Seçiminizi yapın (1-6): 1 --- Kitap Ekleme (API'den) --- 
 ISBN numarası: 9789750738609 
 API'den kitap bilgileri alınıyor... 
@@ -65,11 +65,11 @@ Seçiminizi yapın (1-6): 6
 Kütüphane sistemi kapatılıyor. Güle güle! 
 ## Bölüm 3: FastAPI API Oluşturma Proje 
 Kütüphane işlevlerini web üzerinden sunmak için bir FastAPI API'si oluşturur. 
-# Pydantic Modelleri: 
+### Pydantic Modelleri: 
 API'nin girdi ve çıktı verilerinin yapısını tanımlar (BookModel, 
 ISBNRequest, BookResponse, MessageResponse, ErrorResponse). Veri doğrulaması ve 
 otomatik API dokümantasyonu sağlar. 
-# API Endpoint'leri: 
+### API Endpoint'leri: 
 GET /: API hakkında bilgi verir.  
 GET /books: Kütüphanedeki tüm kitapları listeler.  
 POST /books: ISBN alarak Open Library API'den kitap bilgilerini çeker ve kütüphaneye 
@@ -78,7 +78,7 @@ GET /books/{isbn}: Belirtilen ISBN'e sahip kitabı getirir.
 DELETE /books/{isbn}: Belirtilen ISBN'e sahip kitabı siler.  
 API, uvicorn ile çalıştırılabilir (uvicorn api:app --reload). Otomatik Swagger/OpenAPI 
 dokümantasyonu /docs adresinde bulunur.  
-# Çıktı örneği:  
+### Çıktı örneği:  
 2 kitap yüklendi. 
 INFO:     Will watch for changes in these directories: ['/content'] 
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit) 
@@ -86,14 +86,14 @@ INFO:     Started reloader process [363] using StatReload
 INFO:     Stopping reloader process [363] 
 ## Bölüm 4: Testler 
 Projenin farklı katmanları için otomatik testler yazılmıştır. 
-# Birim Testleri: 
+### Birim Testleri: 
 Book, Library, APILibrary sınıflarının fonksiyonlarını test eder.  
-# API Testleri: 
+### API Testleri: 
 FastAPI endpoint'lerinin doğru yanıt verip vermediğini test etmek için 
 fastapi.testclient. 
 TestClient kullanılır. Bu testler, gerçek bir sunucu başlatmadan uygulama objesi 
 üzerinde çalışır. 
-# Çıktı örneği: 
+### Çıktı örneği: 
 0 kitap yüklendi.  
 Kitap başarıyla eklendi: Test Book by Test Author (ISBN: 123456789) 
 Kitap başarıyla silindi: Test Book by Test Author (ISBN: 123456789)  
