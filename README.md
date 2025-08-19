@@ -1,8 +1,8 @@
-# # # Kütüphane Yönetim Sistemi ve API'si 
+### Kütüphane Yönetim Sistemi ve API'si 
 Bu proje, temel bir Kütüphane Yönetim Sistemi oluşturmayı ve bunu bir FastAPI web 
 API'si aracılığıyla sunmayı amaçlar. Ayrıca, harici bir API (Open Library) kullanarak kitap 
 bilgilerini zenginleştirme özelliği de içerir. 
-# # Bölüm 1: Temel OOP Yapısı Proje 
+## Bölüm 1: Temel OOP Yapısı Proje 
 Kitapları ve kütüphane operasyonlarını yönetmek için Nesne Yönelimli Programlama 
 (OOP) prensiplerini kullanır. 
 # Book Sınıfı: 
